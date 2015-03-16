@@ -23,8 +23,13 @@ object strings  {
 
 
    def getSentenceType(sentence : String) : String = {
-     
-      "unknown"
+        if (sentence.takeRight(1) == "."){
+            return("declarative")}
+        else if (sentence.takeRight(1) == "?"){
+            return("interrogative")}
+        else if (sentence.takeRight(1) == "!"){
+            return("exclamatory")}
+        else return("unknown")
    }
 
 /*
@@ -40,8 +45,17 @@ object strings  {
  */
 
    def getFormattedName(name : String) : String = {
-     
-      "name not calculated yet"
+        var flip = name.split(' ')
+       if(flip.length == 3){
+           return(flip(2) + ", " + flip(0) + " " + flip(1))
+       }
+       else if(flip.length == 2){
+           return(flip(1) + ", " + flip(0))
+       }
+       else if(flip.length == 1){
+           return(flip(0))
+       }
+       else return("")
    }
 
 }
